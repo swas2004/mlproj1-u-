@@ -13,7 +13,7 @@ def index():
 @app.route('/predictdata', methods=['GET', 'POST'])
 def predict_datapoint():
     if request.method == 'GET':
-        return render_template('home.html')
+        return render_template('index.html')
     else:
         print("Received POST request with form data:", request.form)
         try:
@@ -37,7 +37,7 @@ def predict_datapoint():
             results = predict_pipeline.predict(pred_df)
             print("Prediction complete, results:", results)
 
-            return render_template('home.html', results=results[0])
+            return render_template('index.html', result=results[0])
 
         except Exception as e:
             print("Error during prediction route:", e)

@@ -37,7 +37,7 @@ def predict_datapoint():
             results = predict_pipeline.predict(pred_df)
             print("Prediction complete, results:", results)
 
-            return render_template('home.html', results=results[0])
+            return render_template('home.html', result=results[0])
 
         except Exception as e:
             print("Error during prediction route:", e)

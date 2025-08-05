@@ -1,1 +1,93 @@
-<h1>welcome </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Exam Performance Indicator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h1 class="display-5">Student Exam Performance Indicator</h1>
+            <p class="lead">Predict Your Maths Score Based on Other Scores & Details</p>
+        </div>
+
+        <div class="card shadow-sm p-4 mb-4">
+            <form action="/predictdata" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <select class="form-select" name="gender" required>
+                        <option disabled selected value="">Select your Gender</option>
+                        <option>male</option>
+                        <option>female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Race or Ethnicity</label>
+                    <select class="form-select" name="ethnicity" required>
+                        <option disabled selected value="">Select Ethnicity</option>
+                        <option>group A</option>
+                        <option>group B</option>
+                        <option>group C</option>
+                        <option>group D</option>
+                        <option>group E</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Parental Level of Education</label>
+                    <select class="form-select" name="parental_level_of_education" required>
+                        <option disabled selected value="">Select Parent Education</option>
+                        <option>associate's degree</option>
+                        <option>bachelor's degree</option>
+                        <option>high school</option>
+                        <option>master's degree</option>
+                        <option>some college</option>
+                        <option>some high school</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Lunch Type</label>
+                    <select class="form-select" name="lunch" required>
+                        <option disabled selected value="">Select Lunch Type</option>
+                        <option>standard</option>
+                        <option>free/reduced</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Test Preparation Course</label>
+                    <select class="form-select" name="test_preparation_course" required>
+                        <option disabled selected value="">Select Test Preparation</option>
+                        <option>completed</option>
+                        <option>none</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Reading Score out of 100</label>
+                    <input class="form-control" type="number" name="reading_score" min="0" max="100" required placeholder="Enter your reading score">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Writing Score out of 100</label>
+                    <input class="form-control" type="number" name="writing_score" min="0" max="100" required placeholder="Enter your writing score">
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Predict your Maths Score</button>
+                </div>
+            </form>
+        </div>
+
+        {% if result %}
+        <div class="alert alert-success text-center fs-4 shadow-sm" role="alert">
+            📊 <strong>Predicted Math Score:</strong> {{ result|round(2) }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
